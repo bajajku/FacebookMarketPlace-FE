@@ -42,7 +42,7 @@ class ItemsViewModel: ObservableObject {
         
         Task {
             do {
-                items = try await apiClient.searchItems(byCategory: category)
+                items = try await apiClient.searchByCategory(byCategory: category)
                 errorMessage = nil
             } catch {
                 errorMessage = error.localizedDescription
