@@ -11,13 +11,21 @@ class ItemsViewModel: ObservableObject {
     
     func loadAllItems() {
         isLoading = true
+        errorMessage = nil
         
         Task {
             do {
                 items = try await apiClient.getAllItems()
-                errorMessage = nil
+            } catch APIError.invalidURL {
+                errorMessage = "Invalid URL configuration"
+            } catch APIError.invalidResponse {
+                errorMessage = "Server returned an invalid response"
+            } catch APIError.decodingError(let error) {
+                errorMessage = "Failed to decode response: \(error.localizedDescription)"
+            } catch APIError.networkError(let error) {
+                errorMessage = "Network error: \(error.localizedDescription)"
             } catch {
-                errorMessage = error.localizedDescription
+                errorMessage = "Unexpected error: \(error.localizedDescription)"
             }
             isLoading = false
         }

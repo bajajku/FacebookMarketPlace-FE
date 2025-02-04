@@ -13,15 +13,15 @@ struct Item: Codable, Identifiable {
     let sellerId: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "Id"
-        case title = "Title"
-        case description = "Description"
-        case price = "Price"
-        case category = "Category"
-        case condition = "Condition"
-        case location = "Location"
-        case images = "Images"
-        case datePosted = "DatePosted"
-        case sellerId = "SellerId"
+        case id
+        case title
+        case description
+        case price
+        case category
+        case condition
+        case location
+        case images
+        case datePosted
+        case sellerId
     }
 } 

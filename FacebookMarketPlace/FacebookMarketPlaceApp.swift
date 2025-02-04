@@ -11,7 +11,7 @@ import SwiftUI
 struct FacebookMarketPlaceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ItemListView()
         }
     }
 }
